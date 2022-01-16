@@ -1,3 +1,4 @@
+from re import A
 from flask import Flask, render_template, request, redirect, url_for, flash
 
 
@@ -12,9 +13,9 @@ def index():
 def plans():
     return "My plan is to be able to take a google sheets page that is public and calculate multiple categories of lifts off it with built in hyperlink buttons"
 
-@app.route("/1")
+@app.route("/workoutcalculation")
 def user2():
-        return "what lift would you like to calculate"
+        return render_template("workoutcalc.html")
 @app.route("/2")
 def supps():
         return render_template("mysupplements.html")
@@ -37,6 +38,19 @@ def login():
     else:
         return render_template("login.html")
 
+@app.route("/workoutcalculation", methods=["POST","GET"])
+def workoutcalc():
+    if request.method == "POST":
+        lift123 = request.form["lift"]
+        prevnumb123 = int(request.form["Pnumber"])
+        recnumb123 = int(request.form["Rnumber"])
+        calculated134 = recnumb123-prevnumb123
+        return render_template("workoutcalcfin.html",lift = lift123, calculated = calculated134)
+    else:
+        return render_template("/workoutcalc.html")
+
+    
+
 @app.route("/<usr>")
 def user(usr):
     if usr == alan:
@@ -47,12 +61,6 @@ def user(usr):
 @app.route("/alan#")
 def alan():
     return render_template("alanb43.html")
-
-
-        
-
-
-
 
 
 
