@@ -42,9 +42,9 @@ def login():
 def workoutcalc():
     if request.method == "POST":
         lift123 = request.form["lift"]
-        prevnumb123 = int(request.form["Pnumber"])
+        bodyweight = int(request.form["bodyweight"])
         recnumb123 = int(request.form["Rnumber"])
-        calculated134 = recnumb123-prevnumb123
+        calculated134 = recnumb123/bodyweight
         return render_template("workoutcalcfin.html",lift = lift123, calculated = calculated134)
     else:
         return render_template("/workoutcalc.html")

@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 {% block title %}Home page {% endblock %}
 {% block content %}
-<h1>your lift </h1> <h1>{{ lift }}</h1>
-<h1>has improved </h1>
-<h1>{{ calculated }}</h1>
-<h1>pounds</h1>
+<h1> your bodyweight ratio for  {{ lift }} : {{calculated}} pounds per bodyweight </h1>
+<form>
+    <input type="button" value="Go back!" onclick="history.back()">
+   </form>
 {% endblock %}
